@@ -1,0 +1,75 @@
+@import './_variables.scss';
+
+.text-gradient {
+	background: linear-gradient(-27deg, $c-blue 40%, #DB5994 47%, #E4CB6F 70%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.text-gradient-big {
+	background: linear-gradient(-27deg, #06A9C0 67%, #DB5994 84%, #E4CB6F 91%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.text-content-gray {
+	color: $c-gray;
+	font-size: 16px;
+	line-height: 28px;
+}
+
+.text-white {
+	color: $c-darkwhite;
+}
+
+.button-blue-border {
+	background-color: transparent;
+	border: 1px solid $c-blue;
+	color: $c-white;
+	padding: 10px;
+	cursor: pointer;
+	&:hover {
+		border-image: linear-gradient(#E4CB6F, #DB5994, #06A9C0) 1 1 1;
+		background-color: #111;
+	}
+
+	&:active {
+		border-image: linear-gradient(#DB5994, #E4CB6F, #06A9C0) 1 1 1;
+		background-color: #000;
+	}
+}
+
+.white-simple-button {
+	background-color: white;
+	border: none;
+	padding: 10px 40px;
+	margin: 0px;
+	border-radius: 5px;
+	color: #2DAFB2;
+	cursor: pointer;
+	width: 100%;
+
+	&:hover {
+		background-color: #EEE;
+	}
+	
+	&:active {
+		background-color: #DDD;
+	}
+
+	&:disabled {
+		opacity: 0.5;
+	}
+}
+
+.fixed {
+	position: fixed;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+.width-100 {
+	width: 100%;
+}

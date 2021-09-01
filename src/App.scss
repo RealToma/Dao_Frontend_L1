@@ -1,0 +1,139 @@
+#main-container {
+	margin-top: 72px;
+	display: flex;
+	
+	#side-image {
+		display: block;
+		position: fixed;
+		background-image: url("./assets/heroimage.png");
+		background-position: center top;
+		background-size: 100% auto;
+		
+		.tip-button {
+			position: absolute;
+			z-index: 1;
+			background-color: transparent;
+			border: none;
+			cursor: pointer;
+			width: 20%;
+
+			img {
+				width: 100%;
+			}
+		}
+
+		#tip-button-shirt {
+			top: 25%;
+			left: 50%;
+		}
+
+		#tip-button-shorts {
+			top: 60%;
+			left: 25%;
+		}
+
+		#tip-button-boots {
+			top: 80%;
+			left: 60%;
+		}
+	}
+
+	#mobile-back {
+		display: none;
+	}
+
+	.hero-image {
+		height: calc(100vh - 72px);
+		display: hide;
+	}
+
+	.tip-card {
+		display: none;
+		background-color: black;
+		border: 1px solid #06A9C0;	
+		position: absolute;
+		top: 20%;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: 20px;
+		width: 40%;
+
+		.tip-title {
+			background: linear-gradient(-46deg, #06A9C0 88%, #DB5994 93%, #E4CB6F 96%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			font-size: 24px;
+			font-weight: 500;
+			font-variant-caps: all-petite-caps;
+			letter-spacing: 5px;
+		}
+
+		.tip-category {
+			display: flex;
+
+			.tip-category-title {
+				color: gray;
+				font-size: 16px;
+				font-weight: 200;
+				line-height: 178.71%;
+			}
+
+			.tip-category-text {
+				color: white;
+				font-variant-caps: all-petite-caps;
+				font-size: 16px;
+				font-weight: 200;
+				line-height: 178.71%;
+			}
+		}
+
+		.tip-content {
+			color: white;
+			font-size: 16px;
+			line-height: 29px;
+		}
+
+		.tip-close-button {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			background-color: transparent;
+			border: none;
+			cursor: pointer;
+		}
+	}
+
+	.social-wrapper {
+		position: fixed;
+    bottom: 20px;
+    text-align: center;
+		display: flex;
+
+		.img-wrapper {
+			width: 25%;
+			img {
+				width: 50%;
+			}
+		}
+	}
+
+	.body-container {
+		display: block;
+		overflow: hidden;
+	}
+		
+	#page-toggle-button {
+		display: none;
+		cursor: pointer;
+	}
+
+	#nav-modal-toggle-button {
+		display: none;
+		cursor: pointer;
+	}
+
+	#nav-modal {
+		display: none;
+		z-index: 1;
+	}
+}
