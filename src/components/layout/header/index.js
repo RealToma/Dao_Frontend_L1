@@ -25,8 +25,8 @@ export default function Header() {
 	return (
 		<div className="header-wrapper" id="header-wrapper">
 			<div id="header-title">
-				<div className="header-text">FAITH CONNEXION&nbsp;</div>
-				<div className="header-text text-gradient">COLLECTIVE</div>
+				<div className="header-text">FAITH&nbsp;</div>
+				<div className="header-text text-gradient">TRIBE</div>
 			</div>
 			<div className="connect-button-wrapper">
 				{web3Loading ? <button className="button-blue-border" disabled>Loading...</button> : <button className="button-blue-border" onClick={connectWallet}>CONNECT A WALLET</button>}
