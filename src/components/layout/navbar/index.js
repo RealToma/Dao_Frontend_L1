@@ -13,7 +13,7 @@ export default function Navbar(props) {
 				<div className="navbar-item">CLAIM</div>
 				<div className="navbar-item">SHOP</div>
 			</div>
-			<div className="text-gradient text-parisshowcase">ART BASEL SHOWCASE</div>
+			<div className="text-gradient text-showcase">ART BASEL SHOWCASE</div>
 		</div>
 	);
 }
