@@ -262,11 +262,11 @@ function App() {
             <div className="nav-text">WHITEPAPER</div>
             <div className="nav-text">RESERVE</div>
             <div className="nav-text">CLAIM</div>
-            <div className="paris-menu-title">ART BASEL SHOWCASE</div>
-            <div className="paris-menu-text">PROPOSALS</div>
-            <div className="paris-menu-text">GOVERNANCE</div>
-            <div className="paris-menu-text">SHOP</div>
-            <div className="paris-menu-text">HELP</div>
+            <div className="nav-text">SHOP</div>
+            <div className="showcase-menu-title">ART BASEL SHOWCASE</div>
+            <div className="showcase-menu-text">PROPOSALS</div>
+            <div className="showcase-menu-text">GOVERNANCE</div>
+            <div className="showcase-menu-text">HELP</div>
           </div>
         </div>
       </div>
