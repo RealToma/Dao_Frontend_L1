@@ -45,6 +45,7 @@ export default function Home() {
 			</div>
 			<div className="text-wrapper">
 				<div className="text-gradient-big text-subtitle">TEAM</div>
+				<div className="text-content-gray">Something about the team here</div> 
 				<div className="team-member-list">
 					<div className="team-member">
 						<img src="/member1.png" alt="member1" />
@@ -70,6 +71,7 @@ export default function Home() {
 			</div>
 			<div className="text-wrapper">
 				<div className="text-gradient-big text-subtitle">PARTNERS</div>
+				<div className="text-content-gray">Something about the partners here</div> 
 				<div className="partner-list">
 					<img src="/adidas.png" alt="adidas" />
 					<img src="/supreme.png" alt="supreme" />
