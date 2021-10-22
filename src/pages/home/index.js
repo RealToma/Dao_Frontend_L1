@@ -54,8 +54,8 @@ export default function Home() {
 					<br /><br />
 					To support the initial launch of the platform, the FAITH TRIBE coin is available now and can be reserved simply by depositing Ethereum into the community reservation smart contract. Click Connect Wallet to complete the process.</div>
 					<br /><br />
-					<button className="button-blue-border">CONNECT WALLET</button>
 				</div>
+				<button className="button-blue-border">CONNECT WALLET</button>
 			</div>
 			<div className="text-wrapper">
 				<div className="text-gradient-big text-subtitle">TEAM</div>
