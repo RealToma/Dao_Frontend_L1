@@ -28,8 +28,14 @@ export default function Home() {
 				</div>
 			</div>
 			<div className="text-wrapper">
-				<div className="text-gradient-big text-subtitle">RESERVATION</div>
-				<div className="text-content-gray">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.  Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</div>
+				<div className="text-gradient-big text-subtitle">RESERVE NOW</div>
+				<div className="text-content-gray">The FAITH TRIBE coin represents membership in the FAITH TRIBE community and gives members rights to receive a share of the fees for transactions process throught the community funded technology platform built on Ethereum. Ownership of the coin provides members the ability to make decisions on use of the community treasury to ensure the success of the FAITH TRIBE platform. 
+					<br /><br />
+					The community coin will be issued to reward contributors through active participation, as well airdropped to participants of the broader FAITH TRIBE ecosystem, in order to catalyze the alignment of incentives to pursue the FAITH TRIBE mission. Finally the community coin will always be redeemable for the purchase of digital and physical assets, at the base cost of producing the asset before any retail markup providing holders a guaranteed discount when they use the coin.
+					<br /><br />
+					To support the initial launch of the platform, the FAITH TRIBE coin is available now and can be reserved simply by depositing Ethereum into the community reservation smart contract. Click Connect Wallet to complete the process.</div>
+					<br /><br />
+				</div>
 				<button className="button-blue-border">CONNECT WALLET</button>
 			</div>
 			<div className="text-wrapper">
