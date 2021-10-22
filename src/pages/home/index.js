@@ -6,7 +6,8 @@ export default function Home() {
 	return (
 		<div className="home-container">
 			<div className="text-wrapper">
-				<div className="text-gradient-big text-subtitle">MAKE THE WORLD YOUR RUNWAY</div>
+				<div className="text-gradient-big text-subtitle">MAKE THE WORLD</div>
+				<div className="text-gradient-big text-subtitle">YOUR RUNWAY</div>
 				<div className="text-content-gray">FAITH TRIBE is a global collaborative fashion design platform.
 					<br /><br />
 					FAITH TRIBE is a revolutionary new way to create and collaborate on fashion designs, where every contributor gets paid directly for their contribution, regardless of where they are on the planet.
