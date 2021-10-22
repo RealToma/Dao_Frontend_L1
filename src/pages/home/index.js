@@ -43,8 +43,6 @@ export default function Home() {
 							<li>Participate in seasonal product drops that are coordinated by the community with votes on which designs are produced and distributed for sale through FAITH CONNEXION channels.</li>
 							<li>Create ad-hoc drops for one off, limited production, and open ended production runs for sale by designers through their own distribution channels.</li>
 						</ul>
-					
-						<br /><br />
 					</div>
 				</div>
 			</div>
