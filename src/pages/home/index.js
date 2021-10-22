@@ -21,28 +21,7 @@ export default function Home() {
 						<img src="/vector.png" alt="vector" className="vector-image" />
 					</div>
 					<div className="text-content-gray">
-						FAITH TRIBE provides two key components to deliver an experience to designers, their supporters, and ultimately buyers.
-						<br /><br />
-						Designer Studio -> Fashion Marketplace (DIAGRAM)
-						<br /><br />
 
-						The Designer Studio enables designers to create new garment designs backed by NFT technology
-						<br />
-						<ul>
-							<li>Designers & artists will work independently or collaboratively on their own designs or customize existing designs.</li>
-							<li>Create a single or collection of DIGITALS with or without a PHYSICALS design twin.</li>
-							<li>Mint digital and physical design assets, setting pricing, distribution rights, and royalty fees using a common NFT standard for encoding designs. </li>
-							<li>Optionally crowdsource public contribution to co-own a design or a collection of designs.</li>
-						</ul>
-						<br /><br />
-
-						The Fashion Marketplace enables designers to sell garment designs using Web 3.0 technology
-						<br />
-						<ul>
-							<li>Sell product NFTs for digital and/or physical products.</li>
-							<li>Participate in seasonal product drops that are coordinated by the community with votes on which designs are produced and distributed for sale through FAITH CONNEXION channels.</li>
-							<li>Create ad-hoc drops for one off, limited production, and open ended production runs for sale by designers through their own distribution channels.</li>
-						</ul>
 					</div>
 				</div>
 			</div>
