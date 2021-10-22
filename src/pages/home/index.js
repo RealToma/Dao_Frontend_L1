@@ -21,20 +21,46 @@ export default function Home() {
 					<div style={{ paddingRight: "30px" }}>
 						<img src="/vector.png" alt="vector" className="vector-image" />
 					</div>
-					<div className="text-content-gray">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+					<div className="text-content-gray">
+						FAITH TRIBE is built on three major key components to deliver an experience to designers, their supporters, fans, and buyers.
 						<br /><br />
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.  Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+						FAITH TRIBE Coin -> Designer Studio -> Fashion Marketplace (DIAGRAM)
 						<br /><br />
-						Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</div>
+						The FAITH TRIBE Coin is a community coin that provides holders with the following benefits
+						<br />
+						<ul>
+							<li>Access to the Studio and Marketplace.</li>
+							<li>Exclusive access to special online and IRL events.</li>
+							<li>Royalties and rewards to community members for contributions.</li>
+							<li>As a currency to buy physical products at wholesale cost.</li>
+						</ul>
+						<br /><br />
+
+						The Designer Studio enables designers to create new garment designs backed by NFT technology
+						<br />
+						<ul>
+							<li>Designers & artists will work independently or collaboratively on their own designs or customize existing designs.</li>
+							<li>Create a single or collection of DIGITALS with or without a PHYSICALS design twin.</li>
+							<li>Mint digital and physical design assets, setting pricing, distribution rights, and royalty fees using a common NFT standard for encoding designs. </li>
+							<li>Optionally crowdsource public contribution to co-own a design or a collection of designs.</li>
+						</ul>
+						<br /><br />
+
+						The Fashion Marketplace enables designers to sell garment designs using Web 3.0 technology
+						<br />
+						<ul>
+							<li>Sell product NFTs for digital and/or physical products.</li>
+							<li>Participate in seasonal product drops that are coordinated by the community with votes on which designs are produced and distributed for sale through FAITH CONNEXION channels.</li>
+							<li>Create ad-hoc drops for one off, limited production, and open ended production runs for sale by designers through their own distribution channels.</li>
+						</ul>
 				</div>
 			</div>
 			<div className="text-wrapper">
-				<div className="text-gradient-big text-subtitle">WHAT IS THE FAITH TRIBE COIN</div>
+				<div className="text-gradient-big text-subtitle">WHAT IS THE FAITH TRIBE COIN?</div>
 				<div className="text-content-gray">The FAITH TRIBE coin represents membership in the FAITH TRIBE community and gives members rights to receive a share of the fees for transactions process throught the community funded technology platform built on Ethereum. Ownership of the coin provides members the ability to make decisions on use of the community treasury to ensure the success of the FAITH TRIBE platform. 
 					<br /><br />
 					The community coin will be issued to reward contributors through active participation, as well airdropped to participants of the broader FAITH TRIBE ecosystem, in order to catalyze the alignment of incentives to pursue the FAITH TRIBE mission. Finally the community coin will always be redeemable for the purchase of digital and physical assets, at the base cost of producing the asset before any retail markup providing holders a guaranteed discount when they use the coin.
-					<br /><br />
-					</div>
+				</div>
 			</div>
 			<div className="text-wrapper">
 				<div className="text-gradient-big text-subtitle">RESERVE NOW</div>
