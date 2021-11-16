@@ -8,11 +8,12 @@
 		}
 
 		#mobile-back {
-			display: block;
+			display: flex;
 			position: relative;
-			background-image: url("./assets/heroimage.png");
-			background-position: center top;
-			background-size: 100% auto;
+			width: 100%;
+			background-color: black;
+			// background-image: url("./assets/heroimage.png");
+
 
 			.tip-button {
 				position: absolute;
@@ -70,7 +71,7 @@
 
 		#nav-modal-toggle-button {
 			display: block;
-			position: absolute;
+			position: fixed;
 			width: 35px;
 			height: 35px;
 			top: 90px;

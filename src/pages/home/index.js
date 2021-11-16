@@ -6,23 +6,25 @@ export default function Home() {
 	return (
 		<div className="home-container">
 			<div className="text-wrapper">
-				<div className="text-gradient-big text-subtitle">MAKE THE WORLD</div>
-				<div className="text-gradient-big text-subtitle">YOUR RUNWAY</div>
-				<div className="text-content-gray">FAITH TRIBE is a global collaborative fashion design platform.
-					<br /><br />
-					FAITH TRIBE is a revolutionary new way to create and collaborate on fashion designs, where every contributor gets paid directly for their contribution, regardless of where they are on the planet.
-					<br /><br />
-					The FAITH TRIBE ecosystem is built on Web 3.0 and NFT technologies, bringing to the market an open and inclusive platform, supported through economic structures that are controlled by the people involved rather than established financial actors.
+				<div className="text-gradient-big text-subtitle">VISION</div>
+				{/* <div className="text-gradient-big text-subtitle">YOUR RUNWAY</div> */}
+				<div className="text-content-gray">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+					<br />
+					aliquam erat volutpat.  Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea
+					<br />
+					commodo consequat.
 				</div>
 			</div>
-			<div className="text-wrapper">
-				<div className="text-gradient-big text-subtitle">HOW IT WORKS</div>
-				<div style={{ display: "flex", flexWrap: "wrap" }}>
-					<div style={{ paddingRight: "30px" }}>
-						<img src="/vector.png" alt="vector" className="vector-image" />
+			<div className="text-wrapper1">
+				<div className="text-gradient-big1 text-subtitle" style={{textAlign:'center'}}>HOW IT WORKS</div>
+				<div style={{ display: "flex", flexWrap: "wrap",  textAlign:'center', justifyContent:'center'}} width="100%">
+					<div style={{ marginTop:'30px' , marginLeft:"10%", marginRight:"10%"}}>
+						<img src="./howitworks.png" alt="vector" className="vector-image" width="100%" height="100%"/>
 					</div>
-					<div className="text-content-gray">
-						FAITH TRIBE is built on three major key components to deliver an experience to designers, their supporters, fans, and buyers.
+					<div className="text-content-gray" style={{ marginTop:'43px' }}>
+						Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at
+						vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore .
+						{/* FAITH TRIBE is built on three major key components to deliver an experience to designers, their supporters, fans, and buyers.
 						<br /><br />
 						FAITH TRIBE Coin -> Designer Studio -> Fashion Marketplace (DIAGRAM)
 						<br /><br />
@@ -52,27 +54,27 @@ export default function Home() {
 							<li>Sell product NFTs for digital and/or physical products.</li>
 							<li>Participate in seasonal product drops that are coordinated by the community with votes on which designs are produced and distributed for sale through FAITH CONNEXION channels.</li>
 							<li>Create ad-hoc drops for one off, limited production, and open ended production runs for sale by designers through their own distribution channels.</li>
-						</ul>
+						</ul> */}
 					</div>
 				</div>
 			</div>
-			<div className="text-wrapper">
+			{/* <div className="text-wrapper">
 				<div className="text-gradient-big text-subtitle">WHAT IS THE FAITH TRIBE COIN?</div>
-				<div className="text-content-gray">The FAITH TRIBE coin represents membership in the FAITH TRIBE community and gives members rights to receive a share of the fees for transactions process throught the community funded technology platform built on Ethereum. Ownership of the coin provides members the ability to make decisions on use of the community treasury to ensure the success of the FAITH TRIBE platform. 
+				<div className="text-content-gray">The FAITH TRIBE coin represents membership in the FAITH TRIBE community and gives members rights to receive a share of the fees for transactions process throught the community funded technology platform built on Ethereum. Ownership of the coin provides members the ability to make decisions on use of the community treasury to ensure the success of the FAITH TRIBE platform.
 					<br /><br />
 					The community coin will be issued to reward contributors through active participation, as well airdropped to participants of the broader FAITH TRIBE ecosystem, in order to catalyze the alignment of incentives to pursue the FAITH TRIBE mission. Finally the community coin will always be redeemable for the purchase of digital and physical assets, at the base cost of producing the asset before any retail markup providing holders a guaranteed discount when they use the coin.
 				</div>
-			</div>
+			</div> */}
 			<div className="text-wrapper">
-				<div className="text-gradient-big text-subtitle">RESERVE NOW</div>
-				<div className="text-content-gray">To support the initial launch of the platform, the FAITH TRIBE coin is available now and can be reserved simply by depositing Ethereum into the community reservation smart contract. Click Connect Wallet to complete the process.
+				<div className="text-gradient-big2 text-subtitle" style={{textAlign:'right'}}>RESERVATION</div>
+				<div className="text-content-gray" style={{marginTop:"30px"}}>To support the initial launch of the platform, the FAITH TRIBE coin is available now and can be reserved simply by depositing Ethereum into the community reservation smart contract. Click Connect Wallet to complete the process.
 					<br /><br />
 				</div>
-				<button className="button-blue-border">CONNECT WALLET</button>
+				{/* <button className="button-blue-border">CONNECT WALLET</button> */}
 			</div>
-			<div className="text-wrapper">
+			{/* <div className="text-wrapper">
 				<div className="text-gradient-big text-subtitle">TEAM</div>
-				<div className="text-content-gray">Something about the team here</div> 
+				<div className="text-content-gray">Something about the team here</div>
 				<div className="team-member-list">
 					<div className="team-member">
 						<img src="/member1.png" alt="member1" />
@@ -98,14 +100,14 @@ export default function Home() {
 			</div>
 			<div className="text-wrapper">
 				<div className="text-gradient-big text-subtitle">PARTNERS</div>
-				<div className="text-content-gray">Something about the partners here</div> 
+				<div className="text-content-gray">Something about the partners here</div>
 				<div className="partner-list">
 					<img src="/adidas.png" alt="adidas" />
 					<img src="/supreme.png" alt="supreme" />
 					<img src="/zara.png" alt="zara" />
 					<img src="/lacoste.png" alt="lacoste" />
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 }

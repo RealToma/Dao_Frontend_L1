@@ -1,11 +1,64 @@
+.slider-control-bottomcenter {
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    ul {
+        position: relative;
+        top: -10px;
+        display: flex;
+        margin: 0px;
+        padding: 0px;
+        list-style-type: none;
+
+        li {
+            button {
+                cursor: pointer;
+                background: transparent;
+                border: none;
+                fill: #7938D2 !important;
+				opacity: 0.3 !important;
+				svg{
+					width: 16px;
+					height: 16px;
+					circle{
+						cx:8px;
+						cy:8px;
+						r:8px;
+					}
+				}
+            }
+        }
+    }
+
+    .active {
+        button {
+            fill: #7938D2 !important;
+			opacity: 1 !important;
+        }
+    }
+	
+}
+
 #main-container {
 	margin-top: 72px;
 	display: flex;
 	
 	#side-image {
-		display: block;
+		display: flex;
 		position: fixed;
-		background-image: url("./assets/heroimage.png");
+		background: black;
+		background-image: linear-gradient(to bottom, rgba(29, 8, 62, 0.9), rgba(21,10,36, 0.86)), url("./assets/slide_up.png");
+		background-repeat: no-repeat;
+		background-size: cover;
+
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		// flex-direction: column;
+		// justify-content: center;
+		// background-image: url("./assets/heroimage.png");
 		background-position: center top;
 		background-size: 100% auto;
 		
@@ -16,16 +69,12 @@
 			border: none;
 			cursor: pointer;
 			width: 20%;
-
 			img {
 				width: 100%;
 			}
 		}
 
-		#tip-button-shirt {
-			top: 25%;
-			left: 50%;
-		}
+
 
 		#tip-button-shorts {
 			top: 60%;
@@ -51,12 +100,13 @@
 		display: none;
 		background-color: black;
 		border: 1px solid #06A9C0;	
-		position: absolute;
-		top: 20%;
+		position: fixed;
+		top: 30%;
 		left: 50%;
 		transform: translateX(-50%);
 		padding: 20px;
 		width: 40%;
+		z-index: 10;
 
 		.tip-title {
 			background: linear-gradient(-46deg, #06A9C0 88%, #DB5994 93%, #E4CB6F 96%);
