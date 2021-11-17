@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from 'styled-components'
 import { Box, Modal } from '@material-ui/core'
 import { MdClose } from 'react-icons/md'
 import { FaMediumM } from 'react-icons/fa'
-import { BsArrowDown, BsDiscord, BsTwitter, BsTelegram } from 'react-icons/bs';
+import { BsDiscord, BsTwitter, BsTelegram } from 'react-icons/bs';
 
 import back_img1 from "../../assets/right_panel_reserve2.png";
-import eth1 from '../../assets/eth1.png';
 import faith1 from '../../assets/faith1.png';
-
 
 export default function Claim({ flag_con_wallet }) {
 	const [open, setOpen] = useState(false);
@@ -48,15 +46,15 @@ export default function Claim({ flag_con_wallet }) {
 	}
 
 	return (
-		<Reserve_body >
-			<Box_letter display="flex" marginTop="15%" color="white" justifyContent="center" fontSize="72px" fontWeight="200" lineHeight="72px" >CLAIM</Box_letter>
+		<Reservebody >
+			<Boxletter display="flex" marginTop="15%" color="white" justifyContent="center" fontSize="72px" fontWeight="200" lineHeight="72px" >CLAIM</Boxletter>
 			<Box textAlign="center" color="white" fontSize="16px" lineHeight="28px" marginTop="2%">
 				Claim state and details go here. ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut<br />
 				laoreet dolore magna aliquam erat volutpat.  Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis <br />
 				nisl ut aliquip ex ea commodo consequat.
 			</Box>
-			<Before flag_success={flag_success} alignItems="center" flexDirection="column" width="60%" height="400px" border="1px solid rgb(112 63 145)" marginTop="5%" bgcolor="rgba(42, 20, 72, 0.85)">
-				<Box_letter1 display="flex" flex="1" justifyContent="center" alignItems="center">CLAIM YOUR FAITH</Box_letter1>
+			<Before flag_success={flag_success? 1:0} alignItems="center" flexDirection="column" width="60%" height="400px" border="1px solid rgb(112 63 145)" marginTop="5%" bgcolor="rgba(42, 20, 72, 0.85)">
+				<Boxletter1 display="flex" flex="1" justifyContent="center" alignItems="center">CLAIM YOUR FAITH</Boxletter1>
 				<Box flex="2" textAlign="center" color="white" fontSize="16px" lineHeight="28px" fontWeight="normal">
 					You are eligible for your TRIBE FAITH.<br />
 					View your FAITH below, and start the claim process.<br />
@@ -65,13 +63,13 @@ export default function Claim({ flag_con_wallet }) {
 				</Box>
 				<Letter1 display="flex" flex="1" justifyContent="center" alignItems="flex-start" color="white" fontSize="48px" lineHeight="28px" fontWeight="300">208704.7482 FAITH</Letter1>
 				<Box display="flex" flex="1" justifyContent="center" alignItems="flex-start" width="100%">
-					<Btn_reserve1 display="flex" justifyContent="center" alignItems="center" onClick={() => { handleOpen() }}> START YOUR CLAIM PROCESS</Btn_reserve1>
+					<Btnreserve1 display="flex" justifyContent="center" alignItems="center" onClick={() => { handleOpen() }}> START YOUR CLAIM PROCESS</Btnreserve1>
 				</Box>
 
 			</Before>
 
-			<Success flag_success={flag_success} alignItems="center" flexDirection="column" width="60%" height="341px" border="1px solid rgb(112 63 145)" marginTop="5%" bgcolor="rgba(42, 20, 72, 0.85)">
-				<Box_letter1 display="flex" flex="1" justifyContent="center" alignItems="center">CLAIM SUCCESSFUL!</Box_letter1>
+			<Success flag_success={flag_success? 1:0} alignItems="center" flexDirection="column" width="60%" height="341px" border="1px solid rgb(112 63 145)" marginTop="5%" bgcolor="rgba(42, 20, 72, 0.85)">
+				<Boxletter1 display="flex" flex="1" justifyContent="center" alignItems="center">CLAIM SUCCESSFUL!</Boxletter1>
 				<Box flex="2" textAlign="center" color="white" fontSize="16px" lineHeight="28px" fontWeight="normal">
 					Congratulations on claiming your FAITH TRIBE!
 					<br />
@@ -149,7 +147,7 @@ export default function Claim({ flag_con_wallet }) {
 						<Box display="flex" flex="1" marginTop="10%" width="80%" border="1px solid white" flexDirection="column">
 							<Box display="flex" flex="2" marginLeft="5%">
 								<Box display="flex" flex='7' alignItems="center" fontSize="16px" color="white" lineHeight="19px" fontWeight="bold">
-									<img src={faith1} width="42px"></img><Box marginLeft="5%">FAITH TRIBE</Box>
+									<img src={faith1} width="42px" alt=""></img><Box marginLeft="5%">FAITH TRIBE</Box>
 								</Box>
 								<Box display="flex" flex="3" justifyContent="flex-end" alignItems="center" >
 									<Box display="flex" marginRight="20%" color="white" fontWeight="300" fontSize="32px" lineHeight="130%">
@@ -166,7 +164,7 @@ export default function Claim({ flag_con_wallet }) {
 						<Box display="flex" flex="1" width="100%" alignItems="center" justifyContent="center">
 							{
 								!flag_con_wallet ? <Box display="flex" width="40%" height="38px" bgcolor="white" style={{ opacity: '0.3' }} color="#2DAFB2" alignItems="center" justifyContent="center" fontSize="16px" lineHeight="19px">CLAIM</Box> :
-									<Btn_reserve display="flex" width="40%" height="38px" bgcolor="white" color="#2DAFB2" alignItems="center" justifyContent="center" fontSize="16px" lineHeight="19px" onClick={() => { trans_success(); }}>CLAIM</Btn_reserve>
+									<Btnreserve display="flex" width="40%" height="38px" bgcolor="white" color="#2DAFB2" alignItems="center" justifyContent="center" fontSize="16px" lineHeight="19px" onClick={() => { trans_success(); }}>CLAIM</Btnreserve>
 							}
 
 						</Box>
@@ -180,7 +178,7 @@ export default function Claim({ flag_con_wallet }) {
 				</Box>
 			</Modal>
 
-		</Reserve_body >
+		</Reservebody >
 	);
 }
 
@@ -231,7 +229,7 @@ const Success = styled(Box)`
 	margin-bottom: 5%;
 `
 
-const Btn_reserve = styled(Box)`
+const Btnreserve = styled(Box)`
 
 	&:hover {
 		cursor: pointer;
@@ -245,7 +243,7 @@ const Btn_reserve = styled(Box)`
 	}
 `
 
-const Btn_reserve1 = styled(Box)`
+const Btnreserve1 = styled(Box)`
 
 	width: 50%;
 	height: 39px !important;
@@ -282,7 +280,7 @@ const Btn_reserve1 = styled(Box)`
 	}
 `
 
-const Box_letter = styled(Box)`
+const Boxletter = styled(Box)`
 	background: linear-gradient(150deg,  #659900 20%,#DB5994 50% ,#7735BD 60%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -300,7 +298,7 @@ const Box_letter = styled(Box)`
 
 `
 
-const Box_letter1 = styled(Box)`
+const Boxletter1 = styled(Box)`
 	font-style: normal;
 	font-weight: 200;
 	font-size: 36px;
@@ -324,7 +322,7 @@ const Box_letter1 = styled(Box)`
 	
 `
 
-const Reserve_body = styled(Box)`
+const Reservebody = styled(Box)`
 	width: 100%;
 	height: 100vh;
 	background-color: black;

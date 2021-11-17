@@ -7,20 +7,18 @@ import {
   Link,
 } from "react-router-dom";
 import { useState, useEffect } from 'react';
-import styled from 'styled-components'
 import { Box } from '@material-ui/core'
+import Carousel from 'nuka-carousel';
+import { Web3ReactProvider } from '@web3-react/core'
+import Web3 from 'web3'
 
 import Header from './components/layout/header'
 import Navbar from './components/layout/navbar'
-import Footer from './components/layout/footer'
-
 import Home from './pages/home'
 import About from './pages/about'
 import Whitepaper from './pages/whitepaper'
 import Reserve from './pages/reserve'
 import Claim from './pages/claim'
-import SimpleImageSlider from "react-simple-image-slider";
-
 
 import img1 from './assets/slide/Untitled-1-02.png'
 import img2 from './assets/slide/Untitled-1-03.png'
@@ -32,16 +30,9 @@ import img7 from './assets/slide/Untitled-1-13.png'
 import img8 from './assets/slide/Untitled-1-15.png'
 import img9 from './assets/slide/Untitled-1-16.png'
 import img10 from './assets/slide/Untitled-1-17.png'
-import slide_up from './assets/slide_up.png'
-import yello_tri from './assets/yellow_tri.png'
 import left_slide1 from './assets/left_slide1.png';
 
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
-import Carousel from 'nuka-carousel';
-import Btn_hotstop from './components/buttons/hotspot'
-import { Web3ReactProvider } from '@web3-react/core'
-import Web3 from 'web3'
-import { useHistory } from "react-router";
 
 function getLibrary(provider) {
   return new Web3(provider)
@@ -77,9 +68,8 @@ function App() {
   const [select1, set_select] = useState(false);
   const mobileMaxWidth = 625;
   let sidewidth = 862 * (height - 72) / 1864
-  const history = useHistory();
-
   const bodywidth = width - sidewidth
+  
   useEffect(() => {
     // Set side image size //
     document.getElementById("side-image").style.width = sidewidth + "px"
@@ -129,11 +119,11 @@ function App() {
     document.getElementById("tip-card-" + tipType).style.display = disp
     setCurrentTip(tipType)
   }
-  const [index, setIndex] = useState(0);
+  // const [index, setIndex] = useState(0);
 
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  }
+  // const handleSelect = (selectedIndex, e) => {
+  //   setIndex(selectedIndex);
+  // }
 
   const [flag_con_wallet, set_con_wallet] = useState(false);
 
@@ -162,43 +152,43 @@ function App() {
                     )}
                   >
                     <Box display="flex" width="100%" height="100%" position="relative">
-                      <img src={img1} width="100%" height="100%" ></img>
+                      <img src={img1} width="100%" height="100%"  alt=""></img>
                       <button style={{ left: "55%", top: "35%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                     </Box>
                     <Box display="flex" width="100%" height="100%" position="relative">
-                      <img src={img2} width="100%" height="100%"></img>
+                      <img src={img2} width="100%" height="100%" alt=""></img>
                       <button style={{ left: "30%", top: "45%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                     </Box>
                     <Box display="flex" width="100%" height="100%" position="relative">
-                      <img src={img3} width="100%" height="100%"></img>
+                      <img src={img3} width="100%" height="100%" alt=""></img>
                       <button style={{ left: "27%", top: "67%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                     </Box>
                     <Box display="flex" width="100%" height="100%" position="relative">
-                      <img src={img4} width="100%" height="100%"></img>
+                      <img src={img4} width="100%" height="100%" alt=""></img>
                       <button style={{ left: "55%", top: "40%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                     </Box>
                     <Box display="flex" width="100%" height="100%" position="relative">
-                      <img src={img5} width="100%" height="100%"></img>
+                      <img src={img5} width="100%" height="100%" alt=""></img>
                       <button style={{ left: "50%", top: "30%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                     </Box>
                     <Box display="flex" width="100%" height="100%" position="relative">
-                      <img src={img6} width="100%" height="100%"></img>
+                      <img src={img6} width="100%" height="100%" alt=""></img>
                       <button style={{ left: "70%", top: "10%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                     </Box>
                     <Box display="flex" width="100%" height="100%" position="relative">
-                      <img src={img7} width="100%" height="100%"></img>
+                      <img src={img7} width="100%" height="100%" alt=""></img>
                       <button style={{ left: "40%", top: "50%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                     </Box>
                     <Box display="flex" width="100%" height="100%" position="relative">
-                      <img src={img8} width="100%" height="100%"></img>
+                      <img src={img8} width="100%" height="100%" alt=""></img>
                       <button style={{ left: "70%", top: "30%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                     </Box>
                     <Box display="flex" width="100%" height="100%" position="relative">
-                      <img src={img9} width="100%" height="100%"></img>
+                      <img src={img9} width="100%" height="100%" alt=""></img>
                       <button style={{ left: "45%", top: "20%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                     </Box>
                     <Box display="flex" width="100%" height="100%" position="relative">
-                      <img src={img10} width="100%" height="100%"></img>
+                      <img src={img10} width="100%" height="100%" alt=""></img>
                       <button style={{ left: "25%", top: "50%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                     </Box>
 
@@ -225,43 +215,43 @@ function App() {
                         )}
                       >
                         <Box display="flex" width="100%" height="100%" position="relative">
-                          <img src={img1} style={{ borderRadius: "10px" }} width="100%" ></img>
+                          <img src={img1} style={{ borderRadius: "10px" }} width="100%"  alt=""></img>
                           <button style={{ left: "55%", top: "35%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                         </Box>
                         <Box display="flex" width="100%" height="100%" position="relative">
-                          <img src={img2} style={{ borderRadius: "10px" }} width="100%" height="100%"></img>
+                          <img src={img2} style={{ borderRadius: "10px" }} width="100%" height="100%" alt=""></img>
                           <button style={{ left: "30%", top: "45%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                         </Box>
                         <Box display="flex" width="100%" height="100%" position="relative">
-                          <img src={img3} style={{ borderRadius: "10px" }} width="100%" height="100%"></img>
+                          <img src={img3} style={{ borderRadius: "10px" }} width="100%" height="100%" alt=""></img>
                           <button style={{ left: "27%", top: "67%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                         </Box>
                         <Box display="flex" width="100%" height="100%" position="relative">
-                          <img src={img4} style={{ borderRadius: "10px" }} width="100%" height="100%"></img>
+                          <img src={img4} style={{ borderRadius: "10px" }} width="100%" height="100%" alt=""></img>
                           <button style={{ left: "55%", top: "40%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                         </Box>
                         <Box display="flex" width="100%" height="100%" position="relative">
-                          <img src={img5} style={{ borderRadius: "10px" }} width="100%" height="100%"></img>
+                          <img src={img5} style={{ borderRadius: "10px" }} width="100%" height="100%" alt=""></img>
                           <button style={{ left: "50%", top: "30%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                         </Box>
                         <Box display="flex" width="100%" height="100%" position="relative">
-                          <img src={img6} style={{ borderRadius: "10px" }} width="100%" height="100%"></img>
+                          <img src={img6} style={{ borderRadius: "10px" }} width="100%" height="100%" alt=""></img>
                           <button style={{ left: "70%", top: "10%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                         </Box>
                         <Box display="flex" width="100%" height="100%" position="relative">
-                          <img src={img7} style={{ borderRadius: "10px" }} width="100%" height="100%"></img>
+                          <img src={img7} style={{ borderRadius: "10px" }} width="100%" height="100%" alt=""></img>
                           <button style={{ left: "40%", top: "50%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                         </Box>
                         <Box display="flex" width="100%" height="100%" position="relative">
-                          <img src={img8} style={{ borderRadius: "10px" }} width="100%" height="100%"></img>
+                          <img src={img8} style={{ borderRadius: "10px" }} width="100%" height="100%" alt=""></img>
                           <button style={{ left: "70%", top: "30%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                         </Box>
                         <Box display="flex" width="100%" height="100%" position="relative">
-                          <img src={img9} style={{ borderRadius: "10px" }} width="100%" height="100%"></img>
+                          <img src={img9} style={{ borderRadius: "10px" }} width="100%" height="100%" alt=""></img>
                           <button style={{ left: "45%", top: "20%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                         </Box>
                         <Box display="flex" width="100%" height="100%" position="relative">
-                          <img src={img10} style={{ borderRadius: "10px" }} width="100%" height="100%"></img>
+                          <img src={img10} style={{ borderRadius: "10px" }} width="100%" height="100%" alt=""></img>
                           <button style={{ left: "25%", top: "50%" }} className="tip-button" onClick={() => onHandleTip("shirt", "block")}><img src="./icon-tip-button.svg" alt="tip button icon" /></button>
                         </Box>
 
@@ -274,7 +264,7 @@ function App() {
                     </Box>
                     <Box display="flex" width="90%" marginTop="15%">
                       <Box display="flex" width="100%" height="100%" position="relative" borderRadius="10px" bgcolor="white">
-                        <img src={left_slide1} style={{ borderRadius: "10px" }} width="100%" height="100%"></img>
+                        <img src={left_slide1} style={{ borderRadius: "10px" }} width="100%" height="100%" alt=""></img>
                       </Box>
                     </Box>
                   </>

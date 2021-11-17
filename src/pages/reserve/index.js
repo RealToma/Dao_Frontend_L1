@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from 'styled-components'
 import { Box, Modal } from '@material-ui/core'
 import { MdClose } from 'react-icons/md'
@@ -48,15 +48,15 @@ export default function Reserve({ flag_con_wallet }) {
 	}
 
 	return (
-		<Reserve_body >
-			<Box_letter display="flex" marginTop="15%" color="white" justifyContent="center" fontSize="72px" fontWeight="200" lineHeight="72px" >RESERVE</Box_letter>
+		<Reservebody >
+			<Boxletter display="flex" marginTop="15%" color="white" justifyContent="center" fontSize="72px" fontWeight="200" lineHeight="72px" >RESERVE</Boxletter>
 			<Box textAlign="center" color="white" fontSize="16px" lineHeight="28px" marginTop="2%">
 				Event state and details go here. ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut<br />
 				laoreet dolore magna aliquam erat volutpat.  Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis <br />
 				nisl ut aliquip ex ea commodo consequat.
 			</Box>
-			<Before flag_success={flag_success} alignItems="center" flexDirection="column" width="60%" height="400px" border="1px solid rgb(112 63 145)" marginTop="5%" bgcolor="rgba(42, 20, 72, 0.85)">
-				<Box_letter1 display="flex" flex="1" justifyContent="center" alignItems="center">Reserve your faith tribe</Box_letter1>
+			<Before flag_success={flag_success? 1:0} alignItems="center" flexDirection="column" width="60%" height="400px" border="1px solid rgb(112 63 145)" marginTop="5%" bgcolor="rgba(42, 20, 72, 0.85)">
+				<Boxletter1 display="flex" flex="1" justifyContent="center" alignItems="center">Reserve your faith tribe</Boxletter1>
 				<Letter2 flex="2" textAlign="center" color="white" fontSize="16px" lineHeight="28px" fontWeight="normal">
 					Reserve details go here. ipsum dolor sit amet, consectetuer adipiscing elit,<br />
 					sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna <br />
@@ -67,13 +67,13 @@ export default function Reserve({ flag_con_wallet }) {
 				</Letter2>
 				<Box display="flex" flex="1" justifyContent="center" alignItems="center" color="white" fontSize="16px" lineHeight="28px" fontWeight="normal">Balance: 21.33ETH</Box>
 				<Box display="flex" flex="1" justifyContent="center" alignItems="flex-start" width="28%">
-					<Btn_reserve1 display="flex" justifyContent="center" alignItems="center" onClick={() => { handleOpen() }}> RESERVE</Btn_reserve1>
+					<Btnreserve1 display="flex" justifyContent="center" alignItems="center" onClick={() => { handleOpen() }}> RESERVE</Btnreserve1>
 				</Box>
 
 			</Before>
 
-			<Success flag_success={flag_success} alignItems="center" flexDirection="column" width="60%" height="341px" border="1px solid rgb(112 63 145)" marginTop="5%" bgcolor="rgba(42, 20, 72, 0.85)">
-				<Box_letter1 display="flex" flex="1" justifyContent="center" alignItems="center">RESERVATION SUCCESSFUL!</Box_letter1>
+			<Success flag_success={flag_success? 1:0} alignItems="center" flexDirection="column" width="60%" height="341px" border="1px solid rgb(112 63 145)" marginTop="5%" bgcolor="rgba(42, 20, 72, 0.85)">
+				<Boxletter1 display="flex" flex="1" justifyContent="center" alignItems="center">RESERVATION SUCCESSFUL!</Boxletter1>
 				<Letter3 flex="2" textAlign="center" color="white" fontSize="16px" lineHeight="28px" fontWeight="normal">
 					Congratulations on reserving your FAITH TRIBE!
 					<br />
@@ -135,7 +135,7 @@ export default function Reserve({ flag_con_wallet }) {
 						<Box display="flex" flex="1" marginTop="3%" width="80%" border="1px solid white">
 							<Box display="flex" flex="7" flexDirection="column" marginLeft="5%">
 								<Box display="flex" flex='2' alignItems="center" fontSize="16px" color="white" lineHeight="19px" fontWeight="bold">
-									<img src={eth1} width="42px"></img><Box marginLeft="5%">ETH</Box>
+									<img src={eth1} width="42px" alt=""></img><Box marginLeft="5%">ETH</Box>
 								</Box>
 								<Box display="flex" flex='1' alignItems="flex-start">
 									<Box display="flex" marginRight="5%" fontSize="14px" color="white" style={{ opacity: '0.6' }} lineHeight="18px">Balance:{'\u00a0'}{'\u00a0'}21.33{'\u00a0'}ETH</Box>
@@ -151,7 +151,7 @@ export default function Reserve({ flag_con_wallet }) {
 						<Box display="flex" flex="1" marginTop="3px" width="80%" border="1px solid white">
 							<Box display="flex" flex="7" flexDirection="column" marginLeft="5%">
 								<Box display="flex" flex='2' alignItems="center" fontSize="16px" color="white" lineHeight="19px" fontWeight="bold">
-									<img src={faith1} width="42px"></img><Box marginLeft="5%">FAITH TRIBE</Box>
+									<img src={faith1} width="42px" alt=""></img><Box marginLeft="5%">FAITH TRIBE</Box>
 								</Box>
 								<Box display="flex" flex='1' alignItems="flex-start">
 									<Box display="flex" marginRight="5%" fontSize="14px" color="white" style={{ opacity: '0.6' }} lineHeight="18px">Reserved:{'\u00a0'}{'\u00a0'}0{'\u00a0'}FAITH</Box>
@@ -167,7 +167,7 @@ export default function Reserve({ flag_con_wallet }) {
 						<Box display="flex" flex="1" width="100%" alignItems="center" justifyContent="center">
 							{
 								!flag_con_wallet ? <Box display="flex" width="40%" height="38px" bgcolor="white" style={{ opacity: '0.3' }} color="#2DAFB2" alignItems="center" justifyContent="center" fontSize="16px" lineHeight="19px">RESERVE</Box> :
-									<Btn_reserve display="flex" width="40%" height="38px" bgcolor="white" color="#2DAFB2" alignItems="center" justifyContent="center" fontSize="16px" lineHeight="19px" onClick={() => { trans_success(); }}>RESERVE</Btn_reserve>
+									<Btnreserve display="flex" width="40%" height="38px" bgcolor="white" color="#2DAFB2" alignItems="center" justifyContent="center" fontSize="16px" lineHeight="19px" onClick={() => { trans_success(); }}>RESERVE</Btnreserve>
 							}
 
 						</Box>
@@ -181,7 +181,7 @@ export default function Reserve({ flag_con_wallet }) {
 				</Box>
 			</Modal>
 
-		</Reserve_body >
+		</Reservebody >
 	);
 }
 
@@ -248,7 +248,7 @@ const Success = styled(Box)`
 
 `
 
-const Btn_reserve = styled(Box)`
+const Btnreserve = styled(Box)`
 
 	&:hover {
 		cursor: pointer;
@@ -262,7 +262,7 @@ const Btn_reserve = styled(Box)`
 	}
 `
 
-const Btn_reserve1 = styled(Box)`
+const Btnreserve1 = styled(Box)`
 
 	width: 100%;
 	height: 39px !important;
@@ -303,7 +303,7 @@ const Btn_reserve1 = styled(Box)`
 	margin-bottom: 3%;
 `
 
-const Box_letter = styled(Box)`
+const Boxletter = styled(Box)`
 	background: linear-gradient(150deg,  #659900 20%,#DB5994 50% ,#7735BD 60%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -322,7 +322,7 @@ const Box_letter = styled(Box)`
 	}
 `
 
-const Box_letter1 = styled(Box)`
+const Boxletter1 = styled(Box)`
 	font-style: normal;
 	font-weight: 200;
 	font-size: 36px;
@@ -347,7 +347,7 @@ const Box_letter1 = styled(Box)`
 	}
 `
 
-const Reserve_body = styled(Box)`
+const Reservebody = styled(Box)`
 	width: 100%;
 	height: 100vh;
 	background-color: black;

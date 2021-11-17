@@ -12,35 +12,30 @@ import {
 	binance_wallet,
 	walletlink,
 } from "../../../utils/connectors";
-import _ from "lodash";
 import { useWeb3React } from '@web3-react/core'
 import Fortmatic from "fortmatic"
 import Web3 from "web3";
 import Portis from "@portis/web3";
-
 
 import metamask from "../../../assets/wallet_icons/metamask.png";
 import walletconnect from "../../../assets/wallet_icons/walletconnect.png";
 import coinbase from "../../../assets/wallet_icons/coinbase.png";
 import fortmatic from "../../../assets/wallet_icons/fortmatic.png";
 import portis from "../../../assets/wallet_icons/portis.png";
-import cache from '../../../utils/cache'
-
-
 
 export default function Header({ flag_con_wallet, set_con_wallet }) {
 	const FORMATIC_API_KEY = "pk_live_9613401E26B091DA";
-	const FORTMATIC_KEY = "pk_test_8F16BED4B4CD6116" // for FORTMATIC testing
-	const PORTIS_ID = "1de60dd1-e77a-4efa-9278-93319070fef9" //https://dashboard.portis.io/
+	// const FORTMATIC_KEY = "pk_test_8F16BED4B4CD6116" // for FORTMATIC testing
+	// const PORTIS_ID = "1de60dd1-e77a-4efa-9278-93319070fef9" //https://dashboard.portis.io/
 
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
 	const { web3Loading, getweb3 } = WalletModel()
-	const [modalShow, setModalShow] = useState("none")
 	const [wallet, set_wallet] = useState([true, true, true, true, true]);
-	const [wallet_loading, set_loading] = useState(false);
 	const [flag_connect, set_connect] = useState(0);
+	// const [modalShow, setModalShow] = useState("none")
+	// const [wallet_loading, set_loading] = useState(false);
 
 	const DESKTOP_CONNECTORS = {
 		MetaMask: injected,
@@ -49,15 +44,14 @@ export default function Header({ flag_con_wallet, set_con_wallet }) {
 		TrustWallet: trustWallet,
 		Coinbase: walletlink,
 	};
-
-	const MOBILE_CONNECTORS = {
-		MetaMask: injected,
-		TrustWallet: trustWallet,
-		BinanceWallet: binance_wallet,
-	};
+	// const MOBILE_CONNECTORS = {
+	// 	MetaMask: injected,
+	// 	TrustWallet: trustWallet,
+	// 	BinanceWallet: binance_wallet,
+	// };
 
 	const walletConnectors = DESKTOP_CONNECTORS;
-	const { account, connector, active, error, activate, deactivate } = useWeb3React();
+	const { activate, deactivate } = useWeb3React();
 
 	const [wallet_address, set_address] = useState('RESERVE NOW');
 
@@ -65,12 +59,14 @@ export default function Header({ flag_con_wallet, set_con_wallet }) {
 		const fm = new Fortmatic(FORMATIC_API_KEY);
 		let web3 = new Web3(fm.getProvider());
 		const accounts = await web3.eth.getAccounts();
+		console.log(accounts);
 	};
 
 	const connect_portis = async () => {
 		const portis = new Portis('93b768a1-12b2-4c87-be0f-ed7314f7a856', 'mainnet');
-		const web3 = new Web3(portis.provider);
+		// const web3 = new Web3(portis.provider);
 		const accounts = await portis.provider.enable();
+		console.log(accounts);
 	}
 
 	const connectWallet1 = (currentConnector) => {
@@ -161,7 +157,7 @@ export default function Header({ flag_con_wallet, set_con_wallet }) {
 					backdropFilter: 'blur(10px)'
 				}}
 			>
-				<Connect_wallet1 sx={style1}>
+				<Connectwallet1 sx={style1}>
 					<Box display="flex" justifyContent="center" marginBottom="2%" fontSize="72px" lineHeight="72px" fontWeight="200" sx={{
 						'background': 'linear-gradient(150deg,  #E4CB6F 20%,#DB5994 50% ,#7735BD 60%)',
 						'-webkit-background-clip': 'text',
@@ -176,15 +172,15 @@ export default function Header({ flag_con_wallet, set_con_wallet }) {
 									set_wallet([true, true, true, true, true]);
 									set_con_wallet(false);
 								}}><MdClose fontSize="24px" color="white"></MdClose></Box>
-							<Letter_connect display="flex" fontSize='24px' color='white' lineHeight='28px' justifyContent="center" marginTop="2%" >CONNECT TO A WALLET</Letter_connect>
-							<Letter_wallet display="flex" fontSize='16px' ineHeight='19px' flexDirection="column" marginTop="2%">
+							<Letterconnect display="flex" fontSize='24px' color='white' lineHeight='28px' justifyContent="center" marginTop="2%" >CONNECT TO A WALLET</Letterconnect>
+							<Letterwallet display="flex" fontSize='16px' lineHeight='19px' flexDirection="column" marginTop="2%">
 								<Box display="flex" flex="1" justifyContent="center" fontSize="16px" lineHeight="19px" color="black" fontWeight="bold">By connecting a wallet, you agree to Faith Connexion’s</Box>
 								<Box display="flex" flex="1" justifyContent="center" fontSize="16px" lineHeight="19px" color="black" fontWeight="bold"><Box color="white" style={{ textDecoration: 'underline' }}>Terms of Service</Box>{'\u00a0'} and acknowledge that you have read and </Box>
 								<Box display="flex" flex="1" justifyContent="center" fontSize="16px" lineHeight="19px" color="black" fontWeight="bold">understand the {'\u00a0'} <Box color="white" style={{ textDecoration: 'underline' }}>FAITH TRIBE protocol disclaimer.</Box></Box>
-							</Letter_wallet>
+							</Letterwallet>
 						</Box>
-						<Box display="flex" flex="4" flexDirection="column" alignItems="center" width="100%" marginTop="10%" marginBottom="10%" alignItems="center" justifyContent="center">
-							<Meta display='flex' width="80%" flex='1' marginTop="1%" marginBottom="1%" wallet0={wallet[0]} >
+						<Box display="flex" flex="4" flexDirection="column" width="100%" marginTop="10%" marginBottom="10%" alignItems="center" justifyContent="center">
+							<Meta display='flex' width="80%" flex='1' marginTop="1%" marginBottom="1%" wallet0={wallet[0]?1:0} >
 								<Box sx={{
 									cursor: 'pointer',
 									display: 'flex',
@@ -200,11 +196,11 @@ export default function Header({ flag_con_wallet, set_con_wallet }) {
 									connectWallet();
 									set_connect(1);
 								}} >
-									<img src={metamask} width="40px" height="40px"></img><Box fontWeight='bold' marginLeft='10%' color='white' fontSize='16px'>METAMASK</Box>
+									<img src={metamask} width="40px" height="40px" alt=""></img><Box fontWeight='bold' marginLeft='10%' color='white' fontSize='16px'>METAMASK</Box>
 									{flag_connect === 0 ? '' : <Box fontWeight='bold' marginLeft='15%' color='white' fontSize='16px'>Initializing...</Box>}
 								</Box>
 							</Meta>
-							<Wallet display='flex' width="80%" flex='1' marginTop="1%" marginBottom="1%" wallet1={wallet[1]}>
+							<Wallet display='flex' width="80%" flex='1' marginTop="1%" marginBottom="1%" wallet1={wallet[1]?1:0}>
 								<Box sx={{
 									cursor: 'pointer',
 									display: 'flex',
@@ -220,11 +216,11 @@ export default function Header({ flag_con_wallet, set_con_wallet }) {
 									connectWallet1(walletConnectors['WalletConnect']);
 									set_connect(1);
 								}} >
-									<img src={walletconnect} width="40px" height="40px"></img><Box fontWeight='bold' marginLeft='10%' color='white' fontSize='16px'>WALLETCONNECT</Box>
+									<img src={walletconnect} width="40px" height="40px" alt=""></img><Box fontWeight='bold' marginLeft='10%' color='white' fontSize='16px'>WALLETCONNECT</Box>
 									{flag_connect === 0 ? '' : <Box fontWeight='bold' marginLeft='15%' color='white' fontSize='16px'>Initializing...</Box>}
 								</Box>
 							</Wallet>
-							<Coin display='flex' width="80%" flex='1' marginTop="1%" marginBottom="1%" wallet2={wallet[2]}>
+							<Coin display='flex' width="80%" flex='1' marginTop="1%" marginBottom="1%" wallet2={wallet[2]?1:0}>
 								<Box sx={{
 									cursor: 'pointer',
 									display: 'flex',
@@ -240,11 +236,11 @@ export default function Header({ flag_con_wallet, set_con_wallet }) {
 									connectWallet1(walletConnectors['Coinbase']);
 									set_connect(1);
 								}}  >
-									<img src={coinbase} width="40px" height="40px"></img><Box fontWeight='bold' marginLeft='10%' color='white' fontSize='16px'>COINBASE</Box>
+									<img src={coinbase} width="40px" height="40px" alt=""></img><Box fontWeight='bold' marginLeft='10%' color='white' fontSize='16px'>COINBASE</Box>
 									{flag_connect === 0 ? '' : <Box fontWeight='bold' marginLeft='15%' color='white' fontSize='16px'>Initializing...</Box>}
 								</Box>
 							</Coin>
-							<Fort display='flex' width="80%" flex='1' marginTop="1%" marginBottom="1%" wallet3={wallet[3]}>
+							<Fort display='flex' width="80%" flex='1' marginTop="1%" marginBottom="1%" wallet3={wallet[3]?1:0}>
 								<Box sx={{
 									cursor: 'pointer',
 									display: 'flex',
@@ -260,11 +256,11 @@ export default function Header({ flag_con_wallet, set_con_wallet }) {
 									connectformatic();
 									set_connect(1);
 								}} >
-									<img src={fortmatic} width="40px" height="40px"></img><Box fontWeight='bold' marginLeft='10%' color='white' fontSize='16px'>FORTMATIC</Box>
+									<img src={fortmatic} width="40px" height="40px" alt=""></img><Box fontWeight='bold' marginLeft='10%' color='white' fontSize='16px'>FORTMATIC</Box>
 									{flag_connect === 0 ? '' : <Box fontWeight='bold' marginLeft='15%' color='white' fontSize='16px'>Initializing...</Box>}
 								</Box>
 							</Fort>
-							<Port display='flex' width="80%" flex='1' marginTop="1%" marginBottom="1%" wallet4={wallet[4]}>
+							<Port display='flex' width="80%" flex='1' marginTop="1%" marginBottom="1%" wallet4={wallet[4]?1:0}>
 								<Box sx={{
 									cursor: 'pointer',
 									display: 'flex',
@@ -280,14 +276,14 @@ export default function Header({ flag_con_wallet, set_con_wallet }) {
 									connect_portis();
 									set_connect(1);
 								}} >
-									<img src={portis} width="40px" height="40px"></img><Box fontWeight='bold' marginLeft='10%' color='white' fontSize='16px'>PORTIS</Box>
+									<img src={portis} width="40px" height="40px" alt=""></img><Box fontWeight='bold' marginLeft='10%' color='white' fontSize='16px'>PORTIS</Box>
 									{flag_connect === 0 ? '' : <Box fontWeight='bold' marginLeft='15%' color='white' fontSize='16px'>Initializing...</Box>}
 								</Box>
 							</Port>
 
 						</Box>
 					</Box>
-				</Connect_wallet1>
+				</Connectwallet1>
 			</Modal>
 			{/* <div className="wallet-result-modal" id="modal">
 				<h1>RESERVE FAITH TOKEN</h1>
@@ -324,7 +320,7 @@ export default function Header({ flag_con_wallet, set_con_wallet }) {
 	);
 }
 
-const Connect_wallet1 = styled(Box)`
+const Connectwallet1 = styled(Box)`
 
 	@media (max-width: 800px) {
 		width: 60% !important;
@@ -340,7 +336,7 @@ const Connect_wallet1 = styled(Box)`
 	}
 `
 
-const Letter_connect = styled(Box)`
+const Letterconnect = styled(Box)`
 	@media (max-width: 1000px) {
 		font-size: 22px !important;
 	}
@@ -355,7 +351,7 @@ const Letter_connect = styled(Box)`
 	}
 `
 
-const Letter_wallet = styled(Box)`
+const Letterwallet = styled(Box)`
 	@media (max-width: 1140px) {
 		display: none !important;
 	}
