@@ -134,7 +134,7 @@ export default function Reserve({ flag_con_wallet }) {
 						</Box>
 						<Box display="flex" flex="1" marginTop="3%" width="80%" border="1px solid white">
 							<Box display="flex" flex="7" flexDirection="column" marginLeft="5%">
-								<Box display="flex" flex='2' alignItems="center" fontSize="16px" color="white" lineHeight="19px" fontWeight="bold">
+								<Box display="flex" flex='2' alignItems="center" fontSize="16px" color="white" lineHeight="19px" fontWeight="bold" >
 									<img src={eth1} width="42px" alt=""></img><Box marginLeft="5%">ETH</Box>
 								</Box>
 								<Box display="flex" flex='1' alignItems="flex-start">
@@ -357,6 +357,6 @@ const Reservebody = styled(Box)`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	overflow: scroll;
+	/* overflow: scroll; */
 
 `
