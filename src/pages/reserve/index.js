@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from 'styled-components'
 import { Box, Modal } from '@material-ui/core'
 import { MdClose } from 'react-icons/md'
@@ -8,12 +8,49 @@ import { BsArrowDown, BsDiscord, BsTwitter, BsTelegram } from 'react-icons/bs';
 import back_img1 from "../../assets/right_panel_reserve2.png";
 import eth1 from '../../assets/eth1.png';
 import faith1 from '../../assets/faith1.png';
+import WalletModel from "../../components/wallet_modal";
 
+
+import Token from '../../connectors/Token.json'
 
 export default function Reserve({ flag_con_wallet }) {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
+	const { web3Loading, getweb3 } = WalletModel()
+	const [balace_eth, set_eth] = useState(0);
+	const [balace_faith, set_faith] = useState(0);
+	const [rate, set_rate] = useState(0);
+
+	const [value_eth, set_value1]= useState('');
+	const [value_faith, set_value2]= useState('');
+
+	useEffect(async() => {
+
+		await getweb3().then(async(response) => {
+			response.eth.getAccounts().then((result) => {
+				response.eth.getBalance(result[0]).then((result) => {
+					var temp = response.utils.fromWei(result, "ether");
+					//console.log(temp);
+					set_eth(parseFloat(temp).toFixed(4));
+					//console.log('balance:', parseFloat(result).toFixed(1))
+				})
+			});
+			let contract = new response.eth.Contract(Token.abi,"0xcac6338567608fe59ab5dd8fcda97a1135e5a102");
+			//console.log(contract);
+			const faith_wei = await contract.methods.getPriceInWei().call();
+			const faith_bal = await contract.methods.claimedTotal().call();
+			const temp_faith = response.utils.fromWei(faith_bal, "ether");
+			set_faith(parseFloat(temp_faith).toFixed(4));
+			const temp = response.utils.fromWei(faith_wei, "ether");
+			const rate1 = 1/temp;
+			set_rate(rate1);
+
+			//console.log(a);
+		});
+
+		
+	},[])
 
 	const style1 = {
 		display: "flex",
@@ -65,7 +102,7 @@ export default function Reserve({ flag_con_wallet }) {
 					Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper <br />
 					suscipit lobortis nisl ut aliquip ex ea commodo consequat.
 				</Letter2>
-				<Box display="flex" flex="1" justifyContent="center" alignItems="center" color="white" fontSize="16px" lineHeight="28px" fontWeight="normal">Balance: 21.33ETH</Box>
+				<Box display="flex" flex="1" justifyContent="center" alignItems="center" color="white" fontSize="16px" lineHeight="28px" fontWeight="normal">Balance: {balace_eth+"ETH"}</Box>
 				<Box display="flex" flex="1" justifyContent="center" alignItems="flex-start" width="28%">
 					<Btnreserve1 display="flex" justifyContent="center" alignItems="center" onClick={() => { handleOpen() }}> RESERVE</Btnreserve1>
 				</Box>
@@ -138,13 +175,27 @@ export default function Reserve({ flag_con_wallet }) {
 									<img src={eth1} width="42px" alt=""></img><Box marginLeft="5%">ETH</Box>
 								</Box>
 								<Box display="flex" flex='1' alignItems="flex-start">
-									<Box display="flex" marginRight="5%" fontSize="14px" color="white" style={{ opacity: '0.6' }} lineHeight="18px">Balance:{'\u00a0'}{'\u00a0'}21.33{'\u00a0'}ETH</Box>
+									<Box display="flex" marginRight="5%" fontSize="14px" color="white" style={{ opacity: '0.6' }} lineHeight="18px">Balance:{'\u00a0'}{'\u00a0'}{balace_eth}{'\u00a0'}ETH</Box>
 									<Box display="flex" fontSize="14px" color="white" lineHeight="18px" fontWeight="bold">( MAX )</Box>
 								</Box>
 							</Box>
 							<Box display="flex" flex="3" justifyContent="flex-end" alignItems="center" >
-								<Box display="flex" marginRight="20%" color="white" fontWeight="300" fontSize="32px" lineHeight="130%">
-									0.0
+								<Box display="flex" component="input" placeholder="0.0" marginRight="20%" color="white" bgcolor="#2DAFB2"fontWeight="300" fontSize="30px" lineHeight="130%" width="150px"
+								value={value_eth}
+								onChange={(e)=>{
+									if(parseFloat(e.target.value)>balace_eth)
+									{
+										alert("You must input value less than max value!");
+										set_value1('');
+										return;
+									}
+									set_value1(e.target.value)
+									var temp = e.target.value;
+									var temp1 = temp*rate;
+									//console.log(temp1);
+									set_value2(temp1)
+								}}>
+									
 								</Box>
 							</Box>
 						</Box>
@@ -154,13 +205,13 @@ export default function Reserve({ flag_con_wallet }) {
 									<img src={faith1} width="42px" alt=""></img><Box marginLeft="5%">FAITH TRIBE</Box>
 								</Box>
 								<Box display="flex" flex='1' alignItems="flex-start">
-									<Box display="flex" marginRight="5%" fontSize="14px" color="white" style={{ opacity: '0.6' }} lineHeight="18px">Reserved:{'\u00a0'}{'\u00a0'}0{'\u00a0'}FAITH</Box>
+									<Box display="flex" marginRight="5%" fontSize="14px" color="white" style={{ opacity: '0.6' }} lineHeight="18px">Reserved:{'\u00a0'}{'\u00a0'}{balace_faith}{'\u00a0'}FAITH</Box>
 									{/* <Box display="flex" fontSize="14px" color="white" lineHeight="18px" fontWeight="bold">( MAX )</Box> */}
 								</Box>
 							</Box>
 							<Box display="flex" flex="3" justifyContent="flex-end" alignItems="center" >
-								<Box display="flex" marginRight="20%" color="white" fontWeight="300" fontSize="32px" lineHeight="130%">
-									0.0
+								<Box display="flex" value={value_faith} component="input" disabled="disabled" placeholder="0.0" marginRight="20%" color="white" fontWeight="300" fontSize="18px" lineHeight="130%" color="white" bgcolor="#2DAFB2" width="150px">
+									
 								</Box>
 							</Box>
 						</Box>
@@ -172,7 +223,7 @@ export default function Reserve({ flag_con_wallet }) {
 
 						</Box>
 						<Box display="flex" flex="1" justifyContent="center" fontSize="32px" lineHeight="130%" fontWeight="300" color="white">
-							1 ETH = 69568.2494 FAITH
+							1 ETH = {parseFloat(rate).toFixed(4)}{'\u00a0'}FAITH
 						</Box>
 						<Box position="absolute" display="flex" justifyContent="center" alignItems="center" borderRadius="100%" width="29px" height="29px" bgcolor="white" top="35%">
 							<BsArrowDown color="#06A9C0" fontSize="25px" fontWeight="bold"></BsArrowDown>
