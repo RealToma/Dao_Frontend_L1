@@ -22,12 +22,13 @@ export default function Reserve({ flag_con_wallet }) {
 	const [balace_faith, set_faith] = useState(0);
 	const [rate, set_rate] = useState(0);
 
-	const [value_eth, set_value1]= useState('');
-	const [value_faith, set_value2]= useState('');
+	const [value_eth, set_value1] = useState('');
+	const [value_faith, set_value2] = useState('');
 
-	useEffect(async() => {
 
-		await getweb3().then(async(response) => {
+	useEffect(async () => {
+
+		await getweb3().then(async (response) => {
 			response.eth.getAccounts().then((result) => {
 				response.eth.getBalance(result[0]).then((result) => {
 					var temp = response.utils.fromWei(result, "ether");
@@ -36,21 +37,37 @@ export default function Reserve({ flag_con_wallet }) {
 					//console.log('balance:', parseFloat(result).toFixed(1))
 				})
 			});
-			let contract = new response.eth.Contract(Token.abi,"0xcac6338567608fe59ab5dd8fcda97a1135e5a102");
+			let contract = new response.eth.Contract(Token.abi, "0xcac6338567608fe59ab5dd8fcda97a1135e5a102");
 			//console.log(contract);
 			const faith_wei = await contract.methods.getPriceInWei().call();
 			const faith_bal = await contract.methods.claimedTotal().call();
 			const temp_faith = response.utils.fromWei(faith_bal, "ether");
 			set_faith(parseFloat(temp_faith).toFixed(4));
 			const temp = response.utils.fromWei(faith_wei, "ether");
-			const rate1 = 1/temp;
+			const rate1 = 1 / temp;
 			set_rate(rate1);
 
 			//console.log(a);
 		});
 
-		
-	},[])
+
+	}, [])
+
+	const trans_success = async () => {
+
+		getweb3().then(async (response) => {
+			let contract = new response.eth.Contract(Token.abi, "0xcac6338567608fe59ab5dd8fcda97a1135e5a102");
+			var amount_eth;
+			amount_eth = Math.floor(value_eth * Math.pow(10, 18));
+			const t = Math.floor(value_faith).toString(16);
+			const a = "0x" + t;
+			// amount_faith = value_eth*Math.pow(10,18);
+			await contract.methods.hold(amount_eth, a).send({ from: '0x7C7572a2227065321Ce01f444CB1A63A3caA8509', value: amount_eth }).then(async (res) => {
+				handleClose();
+				set_success(true);
+			});
+		});
+	}
 
 	const style1 = {
 		display: "flex",
@@ -78,11 +95,6 @@ export default function Reserve({ flag_con_wallet }) {
 
 	const [flag_success, set_success] = useState(false);
 
-	const trans_success = () => {
-		handleClose();
-		set_success(true);
-
-	}
 
 	return (
 		<Reservebody >
@@ -92,7 +104,7 @@ export default function Reserve({ flag_con_wallet }) {
 				laoreet dolore magna aliquam erat volutpat.  Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis <br />
 				nisl ut aliquip ex ea commodo consequat.
 			</Box>
-			<Before flag_success={flag_success? 1:0} alignItems="center" flexDirection="column" width="60%" height="400px" border="1px solid rgb(112 63 145)" marginTop="5%" bgcolor="rgba(42, 20, 72, 0.85)">
+			<Before flag_success={flag_success ? 1 : 0} alignItems="center" flexDirection="column" width="60%" height="400px" border="1px solid rgb(112 63 145)" marginTop="5%" bgcolor="rgba(42, 20, 72, 0.85)">
 				<Boxletter1 display="flex" flex="1" justifyContent="center" alignItems="center">Reserve your faith tribe</Boxletter1>
 				<Letter2 flex="2" textAlign="center" color="white" fontSize="16px" lineHeight="28px" fontWeight="normal">
 					Reserve details go here. ipsum dolor sit amet, consectetuer adipiscing elit,<br />
@@ -102,14 +114,14 @@ export default function Reserve({ flag_con_wallet }) {
 					Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper <br />
 					suscipit lobortis nisl ut aliquip ex ea commodo consequat.
 				</Letter2>
-				<Box display="flex" flex="1" justifyContent="center" alignItems="center" color="white" fontSize="16px" lineHeight="28px" fontWeight="normal">Balance: {balace_eth+"ETH"}</Box>
+				<Box display="flex" flex="1" justifyContent="center" alignItems="center" color="white" fontSize="16px" lineHeight="28px" fontWeight="normal">Balance: {balace_eth + "ETH"}</Box>
 				<Box display="flex" flex="1" justifyContent="center" alignItems="flex-start" width="28%">
 					<Btnreserve1 display="flex" justifyContent="center" alignItems="center" onClick={() => { handleOpen() }}> RESERVE</Btnreserve1>
 				</Box>
 
 			</Before>
 
-			<Success flag_success={flag_success? 1:0} alignItems="center" flexDirection="column" width="60%" height="341px" border="1px solid rgb(112 63 145)" marginTop="5%" bgcolor="rgba(42, 20, 72, 0.85)">
+			<Success flag_success={flag_success ? 1 : 0} alignItems="center" flexDirection="column" width="60%" height="341px" border="1px solid rgb(112 63 145)" marginTop="5%" bgcolor="rgba(42, 20, 72, 0.85)">
 				<Boxletter1 display="flex" flex="1" justifyContent="center" alignItems="center">RESERVATION SUCCESSFUL!</Boxletter1>
 				<Letter3 flex="2" textAlign="center" color="white" fontSize="16px" lineHeight="28px" fontWeight="normal">
 					Congratulations on reserving your FAITH TRIBE!
@@ -180,22 +192,31 @@ export default function Reserve({ flag_con_wallet }) {
 								</Box>
 							</Box>
 							<Box display="flex" flex="3" justifyContent="flex-end" alignItems="center" >
-								<Box display="flex" component="input" placeholder="0.0" marginRight="20%" color="white" bgcolor="#2DAFB2"fontWeight="300" fontSize="30px" lineHeight="130%" width="150px"
-								value={value_eth}
-								onChange={(e)=>{
-									if(parseFloat(e.target.value)>balace_eth)
-									{
-										alert("You must input value less than max value!");
-										set_value1('');
-										return;
-									}
-									set_value1(e.target.value)
-									var temp = e.target.value;
-									var temp1 = temp*rate;
-									//console.log(temp1);
-									set_value2(temp1)
-								}}>
-									
+								<Box display="flex" component="input" placeholder="0.0" marginRight="20%" color="white" bgcolor="#2DAFB2" fontWeight="300" fontSize="30px" lineHeight="130%" width="150px"
+									value={value_eth}
+									onChange={(e) => {
+										if (parseFloat(e.target.value) > balace_eth) {
+											alert("You must input value less than max value!");
+											set_value1('');
+											set_value2('');
+											return;
+										}
+										else {
+											set_value1(e.target.value)
+											var temp = e.target.value;
+											var temp1 = temp * rate;
+											if (temp1 > balace_faith) {
+												alert("Your inputed eth value is higher than Faith total value! Please retry!");
+												set_value1('');
+												set_value2('');
+												return;
+											}
+											//console.log(temp1);
+											set_value2(temp1);
+										}
+
+									}}>
+
 								</Box>
 							</Box>
 						</Box>
@@ -210,8 +231,9 @@ export default function Reserve({ flag_con_wallet }) {
 								</Box>
 							</Box>
 							<Box display="flex" flex="3" justifyContent="flex-end" alignItems="center" >
-								<Box display="flex" value={value_faith} component="input" disabled="disabled" placeholder="0.0" marginRight="20%" color="white" fontWeight="300" fontSize="18px" lineHeight="130%" color="white" bgcolor="#2DAFB2" width="150px">
-									
+								<Box display="flex" value={value_faith} component="input" disabled="disabled" placeholder="0.0" marginRight="20%" color="white" fontWeight="300" fontSize="18px" lineHeight="130%" color="white" bgcolor="#2DAFB2" width="150px"
+								>
+
 								</Box>
 							</Box>
 						</Box>
