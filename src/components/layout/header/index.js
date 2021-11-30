@@ -86,7 +86,7 @@ export default function Header({ flag_con_wallet, set_con_wallet }) {
 			response.eth.getAccounts().then((result) => {
 				set_address(result[0].toString());
 				response.eth.getBalance(result[0]).then((result) => {
-					console.log('balance:', parseFloat(result).toFixed(1))
+					// console.log('balance:', parseFloat(result).toFixed(1))
 				})
 			});
 		});

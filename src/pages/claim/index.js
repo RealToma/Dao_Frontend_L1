@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from 'styled-components'
 import { Box, Modal } from '@material-ui/core'
 import { MdClose } from 'react-icons/md'
@@ -7,11 +7,18 @@ import { BsDiscord, BsTwitter, BsTelegram } from 'react-icons/bs';
 
 import back_img1 from "../../assets/right_panel_reserve2.png";
 import faith1 from '../../assets/faith1.png';
+import WalletModel from "../../components/wallet_modal";
+import Token from '../../connectors/Token.json'
+import Web3 from 'web3'
 
 export default function Claim({ flag_con_wallet }) {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
+	const { getweb3 } = WalletModel()
+	const [tribe, set_tribe]= useState(0);
+	const [rate, set_rate] = useState(0);
+	const [reserve, set_reserve] = useState(0);
 
 	const style1 = {
 		display: "flex",
@@ -39,11 +46,57 @@ export default function Claim({ flag_con_wallet }) {
 
 	const [flag_success, set_success] = useState(false);
 
+
+	useEffect(async () => {
+		window.web3 = new Web3(window.web3.currentProvider);
+		await window.ethereum.enable();
+		if(flag_con_wallet)
+		{
+			// console.log(process.env.DAO_CONTRACT);
+			let contract = new window.web3.eth.Contract(Token.abi, "0xcac6338567608fe59ab5dd8fcda97a1135e5a102")
+			let temp_tribe = await contract.methods.claimedTotal.call().call();
+			set_tribe( window.web3.utils.fromWei(temp_tribe, 'ether'));
+
+			let remain_reserve = await contract.methods.getTokensRemainingToClaim.call().call();
+			set_reserve(remain_reserve);
+			console.log(remain_reserve)
+			const faith_wei = await contract.methods.getPriceInWei().call();
+			const temp = window.web3.utils.fromWei(faith_wei, "ether");
+			const rate1 = temp;
+			set_rate(rate1);
+		}
+		else{
+			alert("Please connect wallet.");
+		}
+		// console.log(temp_tribe)
+	}, [])
+
 	const trans_success = () => {
-		handleClose();
-		set_success(true);
+		getweb3().then(async (response) => {
+			window.web3 = new Web3(window.web3.currentProvider);
+			await window.ethereum.enable();
+			const accounts = await window.web3.eth.getAccounts();
+			let contract = new response.eth.Contract(Token.abi, "0xcac6338567608fe59ab5dd8fcda97a1135e5a102");
+
+			var amount_eth;
+			amount_eth = Math.floor(tribe * Math.pow(10, 18))*rate;
+			console.log(tribe);
+			const t = Math.floor(tribe+reserve).toString(16);
+			const a = "0x" + t;
+			console.log(a);
+
+			await contract.methods.claim(tribe).send({ from: accounts[0] }).then(async (res) => {
+				handleClose();
+				set_success(true);
+			});
+		});
 
 	}
+
+	const [faith, set_faith] = useState();
+	const decimal = 18;
+
+	
 
 	return (
 		<Reservebody >
@@ -61,7 +114,7 @@ export default function Claim({ flag_con_wallet }) {
 					<br />
 					You can receive up to...
 				</Box>
-				<Letter1 display="flex" flex="1" justifyContent="center" alignItems="flex-start" color="white" fontSize="48px" lineHeight="28px" fontWeight="300">208704.7482 FAITH</Letter1>
+				<Letter1 display="flex" flex="1" justifyContent="center" alignItems="flex-start" color="white" fontSize="48px" lineHeight="28px" fontWeight="300">{tribe} FAITH TRIBE</Letter1>
 				<Box display="flex" flex="1" justifyContent="center" alignItems="flex-start" width="100%">
 					<Btnreserve1 display="flex" justifyContent="center" alignItems="center" onClick={() => { handleOpen() }}> START YOUR CLAIM PROCESS</Btnreserve1>
 				</Box>
@@ -151,12 +204,12 @@ export default function Claim({ flag_con_wallet }) {
 								</Box>
 								<Box display="flex" flex="3" justifyContent="flex-end" alignItems="center" >
 									<Box display="flex" marginRight="20%" color="white" fontWeight="300" fontSize="32px" lineHeight="130%">
-										208704.7482
+										{tribe}
 									</Box>
 								</Box>
 							</Box>
 							<Box display="flex" flex='1' alignItems="flex-start" marginLeft="5%">
-								<Box display="flex" marginRight="5%" fontSize="14px" color="white" style={{ opacity: '0.6' }} lineHeight="18px">Balance:{'\u00a0'}{'\u00a0'}208704.7482{'\u00a0'}FAITH TRIBE</Box>
+								<Box display="flex" marginRight="5%" fontSize="14px" color="white" style={{ opacity: '0.6' }} lineHeight="18px">Balance:{'\u00a0'}{'\u00a0'}{tribe}{'\u00a0'}FAITH TRIBE</Box>
 								<Box display="flex" fontSize="14px" color="white" lineHeight="18px" fontWeight="bold">( MAX )</Box>
 							</Box>
 
@@ -169,7 +222,7 @@ export default function Claim({ flag_con_wallet }) {
 
 						</Box>
 						<Box display="flex" flex="1" justifyContent="center" fontSize="32px" lineHeight="130%" fontWeight="300" color="white">
-							1 FAITH = 0.00001437437348 ETH
+							1 FAITH = {parseFloat(rate).toFixed(10)} ETH
 						</Box>
 						{/* <Box position="absolute" display="flex" justifyContent="center" alignItems="center" borderRadius="100%" width="29px" height="29px" bgcolor="white" top="35%">
 							<BsArrowDown color="#06A9C0" fontSize="25px" fontWeight="bold"></BsArrowDown>

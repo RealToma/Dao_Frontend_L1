@@ -9,15 +9,13 @@ import back_img1 from "../../assets/right_panel_reserve2.png";
 import eth1 from '../../assets/eth1.png';
 import faith1 from '../../assets/faith1.png';
 import WalletModel from "../../components/wallet_modal";
-
-
 import Token from '../../connectors/Token.json'
 
 export default function Reserve({ flag_con_wallet }) {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
-	const { web3Loading, getweb3 } = WalletModel()
+	const { getweb3 } = WalletModel()
 	const [balace_eth, set_eth] = useState(0);
 	const [balace_faith, set_faith] = useState(0);
 	const [rate, set_rate] = useState(0);
@@ -47,7 +45,6 @@ export default function Reserve({ flag_con_wallet }) {
 			const rate1 = 1 / temp;
 			set_rate(rate1);
 
-			//console.log(a);
 		});
 
 
@@ -59,10 +56,13 @@ export default function Reserve({ flag_con_wallet }) {
 			let contract = new response.eth.Contract(Token.abi, "0xcac6338567608fe59ab5dd8fcda97a1135e5a102");
 			var amount_eth;
 			amount_eth = Math.floor(value_eth * Math.pow(10, 18));
-			const t = Math.floor(value_faith).toString(16);
+			const k = "0x" + amount_eth;
+			console.log(k);
+			const t = Math.floor(value_faith);
+			console.log(t)
 			const a = "0x" + t;
-			// amount_faith = value_eth*Math.pow(10,18);
-			await contract.methods.hold(amount_eth, a).send({ from: '0x7C7572a2227065321Ce01f444CB1A63A3caA8509', value: amount_eth }).then(async (res) => {
+			console.log(a);
+			await contract.methods.hold(amount_eth, t).send({ from: '0x7C7572a2227065321Ce01f444CB1A63A3caA8509', value:amount_eth}).then(async (res) => {
 				handleClose();
 				set_success(true);
 			});
@@ -205,8 +205,8 @@ export default function Reserve({ flag_con_wallet }) {
 											set_value1(e.target.value)
 											var temp = e.target.value;
 											var temp1 = temp * rate;
-											if (temp1 > balace_faith) {
-												alert("Your inputed eth value is higher than Faith total value! Please retry!");
+											if (e.target.value > balace_eth) {
+												alert("Your inputed eth value is higher than balance of eth! Please retry!");
 												set_value1('');
 												set_value2('');
 												return;
